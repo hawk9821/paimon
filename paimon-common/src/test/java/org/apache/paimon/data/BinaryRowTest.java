@@ -402,7 +402,7 @@ public class BinaryRowTest {
             BinaryRow row = new BinaryRow(2);
             BinaryRowWriter writer = new BinaryRowWriter(row);
             writer.writeDecimal(0, Decimal.fromUnscaledLong(5, precision, scale), precision);
-            writer.setNullAt(1);
+            writer.writeDecimal(1, null, precision);
             writer.complete();
 
             assertThat(row.getDecimal(0, precision, scale).toString()).isEqualTo("0.05");
